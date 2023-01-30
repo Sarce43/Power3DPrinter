@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+    <html>
+        <head>
+            <title> MakerCMT </title>
+
+            <meta http-equiv='content-type' content='text/html; charset=UTF-8'>
+            <meta name='apple-mobile-web-app-capable' content='yes' />
+            <meta name='apple-mobile-web-app-status-bar-style' content='black-translucent' />
+            <meta http-equiv='refresh' content='5'>
+
+            <link rel="stylesheet" href='../static/rpi_style.css'/>
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        </head>
+        
+        <body> 
+            <hr/><hr>
+            <h1 style='color : #0208b3;'><center> CMTRobotics - {{title}} </center></h1>
+            <hr/><hr>
+            <br>
+            <h2><center><p>Date and time :  {{time}}</p></center></h2>
+            <h2> Printer 3D: ON/OFF </h2>
+            <div id='btnContainer'>
+                  <center>
+                  State Printer
+                  <input value={{data[19]}} readonly></input>
+                  <button id='Printer ON'>Turn On </button></a>
+                  <button id='Printer OFF'>Turn Off </button></a><br /> 
+                  </center>
+                  
+             </div>
+
+             <script>
+                // Event Listener
+                var buttonClick = document.getElementById('btnContainer').addEventListener('click',event =>  {
+                  if (event.target.nodeName == "BUTTON") {
+                    var tar = event.target.id;
+                    console.log(tar);
+                    $.getJSON('/'+tar,
+                        function(data) {
+                      //do nothing
+                    });
+
+                    return false;
+                  }
+                });
+            </script>
+    </body>
+</html>
+
