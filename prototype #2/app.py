@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
 #Rele Pin
-rele = 21
+rele = 4
 
 #Status init of rele
 releSts = 0
@@ -31,9 +31,10 @@ def action(deviceName, action):
         actuator = rele
 
     if action == "on":
-        GPIO.output(actuator, GPIO.HIGH)
-    else:
-        GPIO.output(actuator, GPIO.LOW)
+        GPIO.setup(actuator, GPIO.OUT)
+    else :
+        GPIO.setup(actuator, GPIO.IN)
+        
 
     releSts = GPIO.input(rele)
 
